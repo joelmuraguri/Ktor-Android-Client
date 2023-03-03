@@ -1,4 +1,4 @@
-package com.joel.ktor_android_client_calls
+package com.joel.ktor_android_client_calls.presentation.activity
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,8 +10,10 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.joel.ktor_android_client_calls.ui.theme.KtorAndroidClientCallsTheme
+import com.joel.ktor_android_client_calls.presentation.ui.theme.KtorAndroidClientCallsTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,22 +24,11 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Android")
+
+
                 }
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    KtorAndroidClientCallsTheme {
-        Greeting("Android")
-    }
-}

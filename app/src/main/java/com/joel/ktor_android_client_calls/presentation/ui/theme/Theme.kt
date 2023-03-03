@@ -1,4 +1,4 @@
-package com.joel.ktor_android_client_calls.ui.theme
+package com.joel.ktor_android_client_calls.presentation.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
