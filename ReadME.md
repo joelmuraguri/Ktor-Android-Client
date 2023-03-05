@@ -32,4 +32,4 @@ Visit the website and have a look at it's documentation.
 3. Hilt - For Dependency Injection
 4. Coil - For Image Loading and Caching
 5. Ktor-Client - For Network Calls
-6Paging 3 - For loading and Paging data
+6. Paging 3 - For loading and Paging data
