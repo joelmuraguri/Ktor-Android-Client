@@ -2,7 +2,7 @@
 
 # 🔥🔨
 
-The main aim for developing this project was to learn on know how to implement ktor android client. This is my implementation of the library.  
+The main aim for developing this project was to learn on  how to implement ktor android client. This is my implementation of the library.  
 
 ##
 
