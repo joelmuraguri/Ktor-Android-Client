@@ -11,6 +11,7 @@ class MovieApi @Inject constructor(
     private val client : HttpClient
 ) {
 
+
     suspend fun getPopularPagedResponse() : List<PopularDTO> {
         return client.get<PopularResponse> { url(HttpRoutes.POPULAR) }.results
     }

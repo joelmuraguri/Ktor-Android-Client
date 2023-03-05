@@ -29,6 +29,7 @@ data class PopularDTO(
     val voteCount: Int
 ) {
 
+
     fun toPopularMovie() : PopularMovie{
         return PopularMovie(
             id = id,

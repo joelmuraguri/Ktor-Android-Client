@@ -29,7 +29,7 @@ class MovieViewModel @Inject constructor(
         useCase().onEach { result ->
             when(result){
                 is ResourceResult.Success -> {
-                    _state.value = MovieListState(movies = result.data ?: emptyList())
+                    _state.value = MovieListState(movies = result.data)
                 }
                 is ResourceResult.Loading -> {
                     _state.value = MovieListState(isLoading = true)
@@ -37,7 +37,7 @@ class MovieViewModel @Inject constructor(
                 }
                 is ResourceResult.Error -> {
                     _state.value = MovieListState(
-                        error = result.message ?: "An expected error occurred"
+                        error = result.message
                     )
                 }
                 is ResourceResult.Empty -> TODO()
