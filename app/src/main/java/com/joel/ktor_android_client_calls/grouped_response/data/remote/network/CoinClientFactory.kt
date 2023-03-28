@@ -10,11 +10,13 @@ import io.ktor.client.features.logging.*
 import io.ktor.client.features.observer.*
 import io.ktor.client.request.*
 import io.ktor.http.*
+import kotlinx.serialization.ExperimentalSerializationApi
 import javax.inject.Inject
 
 class CoinHttpClientFactory @Inject constructor() {
 
 
+    @OptIn(ExperimentalSerializationApi::class)
     fun getHttpClient() = HttpClient(Android) {
 
        install(JsonFeature){
@@ -22,6 +24,7 @@ class CoinHttpClientFactory @Inject constructor() {
                prettyPrint = true
                isLenient = true
                ignoreUnknownKeys = true
+               explicitNulls = false
            })
 
            engine {

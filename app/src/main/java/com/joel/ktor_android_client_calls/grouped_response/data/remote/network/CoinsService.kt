@@ -9,7 +9,7 @@ import io.ktor.client.features.*
 import io.ktor.client.request.*
 import javax.inject.Inject
 
-class CoinsServiceImpl @Inject constructor(
+class CoinsService @Inject constructor(
     private val client: HttpClient
 ){
 
@@ -30,6 +30,18 @@ class CoinsServiceImpl @Inject constructor(
     }
 
     suspend fun getCoinDetails(coinId: String): CoinDetailsDTO {
-        TODO("Not yet implemented")
+        return try {
+            client.get{
+                url("${HttpRoutes.GET_COIN_DETAILS}/$coinId")
+            }
+        } catch (e : ClientRequestException){
+            throw KtorDemoException(e.response.status.description)
+        } catch ( e : ServerResponseException){
+            throw KtorDemoException(e.response.status.description)
+        } catch ( e : RedirectResponseException){
+            throw KtorDemoException(e.response.status.description)
+        } catch (e : Exception){
+            throw KtorDemoException(e.localizedMessage ?: "Something went wrong")
+        }
     }
 }

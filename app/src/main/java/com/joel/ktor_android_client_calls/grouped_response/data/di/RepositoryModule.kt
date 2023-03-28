@@ -1,8 +1,9 @@
 package com.joel.ktor_android_client_calls.grouped_response.data.di
 
-import com.joel.ktor_android_client_calls.grouped_response.data.remote.network.CoinsServiceImpl
-import com.joel.ktor_android_client_calls.grouped_response.data.repo.CoinsRepoImpl
+import com.joel.ktor_android_client_calls.grouped_response.data.remote.network.CoinsService
+import com.joel.ktor_android_client_calls.grouped_response.data.repo.CoinsRepository
 import com.joel.ktor_android_client_calls.grouped_response.domain.repo.CoinsRepo
+import com.joel.ktor_android_client_calls.grouped_response.domain.use_case.GetCoinDetailsUseCase
 import com.joel.ktor_android_client_calls.grouped_response.domain.use_case.GetCoinsUseCase
 import dagger.Module
 import dagger.Provides
@@ -18,9 +19,9 @@ object RepositoryModule {
     @Provides
     @Singleton
     fun providesRepository(
-        serviceImpl: CoinsServiceImpl
+        service: CoinsService
     ) : CoinsRepo {
-       return CoinsRepoImpl(serviceImpl)
+       return CoinsRepository(service)
     }
 
     @Provides
@@ -31,4 +32,11 @@ object RepositoryModule {
         return GetCoinsUseCase(repo)
     }
 
+    @Provides
+    @Singleton
+    fun providesGetCoinDetailsUseCase(
+        repo: CoinsRepo
+    ) : GetCoinDetailsUseCase{
+        return GetCoinDetailsUseCase(repo)
+    }
 }

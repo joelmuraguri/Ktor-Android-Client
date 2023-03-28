@@ -13,11 +13,14 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
+import com.joel.ktor_android_client_calls.grouped_response.navigation.NavRoutes
 import com.joel.ktor_android_client_calls.grouped_response.presentation.views.components.CoinItem
 
 @Composable
 fun CoinsListScreen(
-    viewModel: CoinListViewModel = hiltViewModel()
+    viewModel: CoinListViewModel = hiltViewModel(),
+    navController: NavHostController
 ){
 
 
@@ -26,8 +29,9 @@ fun CoinsListScreen(
     Box(modifier = Modifier.fillMaxSize()) {
         LazyVerticalGrid(columns = GridCells.Fixed(2)){
             items(coinListState.coins.size){ index ->
-                CoinItem(coins = coinListState.coins[index])
-
+                CoinItem(coins = coinListState.coins[index]){coin ->
+                    navController.navigate(NavRoutes.CoinDetailScreen.route + "/${coin.id}")
+                }
             }
         }
         if (coinListState.error.isNotBlank()){

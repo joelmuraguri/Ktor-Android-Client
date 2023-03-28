@@ -9,7 +9,9 @@ object HttpRoutes {
 
     const val GET_COINS = "https://api.coinpaprika.com/v1/coins"
 
+    const val GET_COIN_DETAILS = "https://api.coinpaprika.com/v1/coins"
 
+    const val PARAM_COIN_ID = "coin_id"
 
     val api = "api_key=facd5b10ac4ad49bf6c5cce3ff0a0400"
 }
