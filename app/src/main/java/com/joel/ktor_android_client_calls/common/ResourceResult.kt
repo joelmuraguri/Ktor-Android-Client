@@ -1,19 +1,10 @@
 package com.joel.ktor_android_client_calls.common
 
-sealed class ResourceResult<T>(open val data : T ? = null, open val message : String ?= null){
+sealed class ResourceResult<T>(val data : T ? = null, val message : String ?= null){
 
-    data class Success<T>(override val data: T) : ResourceResult<T>(data)
-
-
-    data class Loading<T>(val isLoading : Boolean = true) : ResourceResult<T>(null)
-
-    data class Error<T>(
-       override val message: String,
-       override val data: T? = null,
-       val networkError : Boolean = false
-    ) : ResourceResult<T>(data, message)
-
-    data class Empty<T>(override val message: String) : ResourceResult<T>(null)
+    class Success<T>(data: T) : ResourceResult<T>(data)
+    class Loading<T>(data: T ? =  null) : ResourceResult<T>(data)
+    class Error<T>(message: String, data: T? = null) : ResourceResult<T>(data, message)
 
 }
 
